@@ -81,7 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/Govin.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="index.php?page=mapel" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Pelajaran</p>
                 </a>
@@ -234,7 +234,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h5 class="card-title">Dashboard</h5>
 
                 <p class="card-text">
-                  Halo Nigga
+                 <?php
+                    if (isset($_GET['page'])) {
+                      $page = $_GET['page'];
+                      } else {
+                        $page = "";
+                      }
+                      if ($page =="") {
+                        include "page/dashboard.php";
+                      } else if (!file_exists("page/$page.php")) {
+                        echo "File tidak ditemukan";
+                      } else {
+                        include "page/".$page.".php";
+                      }
+                  ?>
                 </p>
                 
               </div>
