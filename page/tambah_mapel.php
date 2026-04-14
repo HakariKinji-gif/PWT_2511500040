@@ -39,8 +39,7 @@ if(isset($_POST['tambah'])){
     }
 }
 ?>
-
-<section class="content">
+  <section class="content">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-               <h1 class="m-0 text-dark">Data Mapel</h1>
+               <h1 class="m-0 text-dark">Data Guru</h1>
             </div>
           </div>
        </div>
@@ -12,12 +12,12 @@
     if(isset($_GET['action'])) {
       if($_GET['action'] == "hapus") {
         $kd = $_GET['kd'];
-        $query = mysqli_query($koneksi, "DELETE FROM mapel WHERE kd_mapel='$kd'");
+        $query = mysqli_query($koneksi, "DELETE FROM guru WHERE kd_guru='$kd'");
         if($query) {
           echo'
           <div class="alert alert-warning alert -dismissible">
           Berhasil di Hapus</div>';
-          echo '<meta http-equiv="refresh" content="1;url=index.php?page=mapel">';
+          echo '<meta http-equiv="refresh" content="1;url=index.php?page=guru">';
         }
       }
     }
@@ -26,34 +26,40 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
-            <a href="index.php?page=tambah_mapel" class="btn btn-primary btn-sm">
-          Tambah Mapel</a>
+            <a href="index.php?page=tambah_guru" class="btn btn-primary btn-sm">
+          Tambah Guru</a>
             <table class="table table-striped">
               <tread>
                 <tr>
                   <th>No</th>
-                  <th>Kode Mapel</th>
-                  <th>Nama Mapel</th>
-                  <th>KKM</th>
+                  <th>Kode Guru</th>
+                  <th>Nama Guru</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Pendidikan Terakhir</th>
+                  <th>Nomor Telepon</th>
+                  <th>Alamat</th>
                   <th>Aksi</th>
                 </tr>
               <tread>
               <?php
                 $no = 0;
-                $query = mysqli_query($koneksi, "SELECT * FROM mapel");
+                $query = mysqli_query($koneksi, "SELECT * FROM guru");
                 while ($result = mysqli_fetch_array($query)) {
                   $no++;
                 ?>
                 <tbody>
                 <tr>
                 <td><?=$no; ?></td>
-                <td><?=$result['kd_mapel']; ?></td>
-                <td><?=$result['nm_mapel']; ?></td>
-                <td><?=$result['kkm']; ?></td>
+                <td><?=$result['kd_guru']; ?></td>
+                <td><?=$result['nm_guru']; ?></td>
+                <td><?=$result['jenkel']; ?></td>
+                <td><?=$result['pend_terakhir']; ?></td>
+                <td><?=$result['hp']; ?></td>
+                <td><?=$result['alamat']; ?></td>
                 <td>
-                  <a href="index.php?page=mapel&action=hapus&kd=<?=$result['kd_mapel']?>" title="">
+                  <a href="index.php?page=guru&action=hapus&kd=<?=$result['kd_guru']?>" title="">
                   <span class="badge badge-danger">Hapus</span></a>
-                  <a href="index.php?page=edit_mapel&kd=<?=$result['kd_mapel'] ?>" title=""><span class
+                  <a href="index.php?page=edit_guru&kd=<?=$result['kd_guru'] ?>" title=""><span class
                   ="badge badge-warning">Edit</span></a>
                 </td>
                 </tr>
